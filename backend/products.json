@@ -1,10 +1,28 @@
 [
+<<<<<<< HEAD
+=======
+  [
+    {
+      "id": 1757700185829,
+      "name": "Chicken Sandwich",
+      "description": "",
+      "category": "Sandwich",
+      "price": 29.99,
+      "stock": 27,
+      "image": "https://th.bing.com/th/id/R.677f6301cd54a3ff57a899ca0cd1698b?rik=4SM6xnWcHKRJFw&riu=http%3a%2f%2fyestoyolks.com%2fwp-content%2fuploads%2f2016%2f01%2fIMG_9057.jpg&ehk=wegYDuGZkahWnr8O%2bQZSkVcvamnnMgWBHjhdnmYYWqg%3d&risl=&pid=ImgRaw&r=0"
+    }
+  ],
+>>>>>>> 014f6d528284d25b98f2a6e77459c3fd01f82e1c
   {
     "id": 1757701114643,
     "name": "Ham & Cheese",
     "category": "Sandwich",
     "price": 29.99,
+<<<<<<< HEAD
     "stock": 21,
+=======
+    "stock": 30,
+>>>>>>> 014f6d528284d25b98f2a6e77459c3fd01f82e1c
     "image": "https://tse3.mm.bing.net/th/id/OIP.tXWr3G0KEdE572oFIi24hAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },
   {
@@ -70,6 +88,7 @@
     "price": 24.99,
     "stock": 30,
     "image": "https://tse3.mm.bing.net/th/id/OIP.6RMmOpN_fYwR03qbreLf5AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+<<<<<<< HEAD
   },
   {
     "id": 1758114702737,
@@ -98,5 +117,7 @@
     "price": "49.99",
     "stock": "3",
     "image": "https://th.bing.com/th/id/OIP.eb2CaZAU2OkgySxA71Q2_wHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+=======
+>>>>>>> 014f6d528284d25b98f2a6e77459c3fd01f82e1c
   }
 ]

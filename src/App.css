@@ -1,0 +1,282 @@
+/* src/App.css */
+
+/* General App Layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fdf6f9; /* very light pink background */
+  color: #3d2a35; /* dark purple-brown text */
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* medium-small size */
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, #e09cb7, #c18ee0);
+  padding: 0.6rem 1.2rem; /* smaller padding */
+  color: white;
+  font-weight: bold;
+  font-size: 15px; /* slightly reduced */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+/* Footer */
+.footer {
+  background: #c18ee0;
+  color: white;
+  text-align: center;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  border-radius: 12px 12px 0 0;
+  font-size: 13px;
+}
+
+/* Bubble-like Card Styling for Main Sections */
+.bubble-card {
+  background: white;
+  border-radius: 18px; /* bubble effect */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem; /* reduced */
+  margin: 1rem auto;
+  max-width: 900px; /* narrower */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bubble-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Titles inside bubbles */
+.bubble-title {
+  font-size: 20px; /* smaller */
+  font-weight: 700;
+  color: #8e3e63; /* deep pink */
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+/* Tables inside bubbles */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px; /* compact rows */
+  font-size: 13px;
+}
+
+th {
+  background: #e09cb7;
+  color: white;
+  font-weight: 600;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+td {
+  background: #fff;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  color: #4a2c39;
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, #c18ee0, #e09cb7);
+  border: none;
+  padding: 6px 12px; /* smaller */
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #e09cb7, #c18ee0);
+  transform: scale(1.05);
+}/* Small, medium image sizes */
+.small-img { width: 40px; height: auto; border-radius: 8px; }
+.medium-img { width: 80px; height: auto; border-radius: 12px; }
+.tiny-img { width: 30px; height: auto; border-radius: 6px; }
+
+/* Hide/show on screen sizes */
+.hide-on-small { display: grid; }
+.show-on-small { display: none; }
+
+@media (max-width: 768px) {
+  .hide-on-small { display: none; }
+  .show-on-small { display: block; }
+}
+
+/* Table style */
+.bubble-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.bubble-table th, .bubble-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.bubble-table th {
+  background: #f7e6ff;
+  font-weight: bold;
+  color: #5a2d82;
+}
+
+.bubble-card {
+  background: #f8eafc;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.bubble-card h2 {
+  color: #5a2d82;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.bubble-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.bubble-table th, .bubble-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e0d7f3;
+  text-align: left;
+}
+
+.bubble-table th {
+  background: #e4c6f2;
+  color: #5a2d82;
+  font-weight: 600;
+}
+
+.tiny-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* App.css */
+.section-card {
+  background: #fdf0fb; /* light pink/purple tone */
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 1000px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  font-size: 14px; /* smaller font */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+table img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+button {
+  margin: 2px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.add-product-form input {
+  margin: 5px 5px 5px 0;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.add-product-form button {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+/* App.css */
+.reports-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.report-card {
+  background: #f0e5f7; /* soft purple/pink */
+  border-radius: 12px;
+  padding: 10px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 13px;
+}
+/* App.css */
+
+/* Dashboard top cards */
+.dashboard-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  background: #f3d4fa; /* soft pink/purple */
+  padding: 15px;
+  border-radius: 15px;
+  flex: 1 1 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Product menu cards below */
+.products-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.product-card {
+  background: #e7c5f5;
+  border-radius: 12px;
+  padding: 10px;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 13px;
+}
+
+.product-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
