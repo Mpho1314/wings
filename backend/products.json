@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1757701114643,
+    "name": "Ham & Cheese",
+    "category": "Sandwich",
+    "price": 29.99,
+    "stock": 21,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.tXWr3G0KEdE572oFIi24hAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701182048,
+    "name": "Expresso",
+    "category": "Beverage",
+    "price": 24.99,
+    "stock": 29,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.TF6cJznCkt4QB3Dv_RMl0QHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701254993,
+    "name": "Soft Drinks",
+    "category": "Beverage",
+    "price": 19.99,
+    "stock": 6,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.eWw0kGyREfAvQaMZKYomGwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701320197,
+    "name": "Turkey Sandwich",
+    "category": "Sandwich",
+    "price": 29.99,
+    "stock": 30,
+    "image": "https://th.bing.com/th/id/R.bed66888274469ec8708297e5badacaa?rik=ZX30UCLAdpIdPw&pid=ImgRaw&r=0"
+  },
+  {
+    "id": 1757701394892,
+    "name": "Vegan Sandwich",
+    "category": "Sandwich",
+    "price": 39.99,
+    "stock": 30,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.zngdntSmsuXfz2emVq7QhgHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701454316,
+    "name": "Black Tea",
+    "category": "Beverage",
+    "price": 9.99,
+    "stock": 20,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.PXtLTw77pAn-6E0VLF_IjQHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701498865,
+    "name": "Green Tea",
+    "category": "Beverage",
+    "price": 22.99,
+    "stock": 30,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.i9SepKKcwNsFlbbLsKnS9QHaE9?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701548133,
+    "name": "Cappuccino",
+    "category": "Beverage",
+    "price": 29.99,
+    "stock": 30,
+    "image": "https://tse1.mm.bing.net/th/id/OIP.sW9XfAeUJjGHXarMH-ihmwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1757701598405,
+    "name": "Herbal Tea",
+    "category": "Beverage",
+    "price": 24.99,
+    "stock": 30,
+    "image": "https://tse3.mm.bing.net/th/id/OIP.6RMmOpN_fYwR03qbreLf5AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1758114702737,
+    "name": "Chicken Sandwich",
+    "price": "29.99",
+    "stock": "30",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.saTTF02on_kuDZE76QLxcwHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1758115773347,
+    "name": "Smoothie",
+    "price": "24.99",
+    "stock": "20",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.palxquCxiJI79VFWBY1oLAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 1758115817800,
+    "name": "Beer",
+    "price": "29.99",
+    "stock": "4",
+    "image": "https://www.dicalite.com/wp-content/uploads/2019/09/beer.jpg"
+  },
+  {
+    "id": 1758115927372,
+    "name": "Pap and beef stew",
+    "price": "49.99",
+    "stock": "3",
+    "image": "https://th.bing.com/th/id/OIP.eb2CaZAU2OkgySxA71Q2_wHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+  }
+]
