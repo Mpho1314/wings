@@ -1,53 +1,56 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API_URL from "../config";
-import "../theme.css";
+import "../App.css";
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
 
-  const fetchInventory = async () => {
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
     try {
-      const res = await axios.get(`${API_URL}/products`);
+      const res = await axios.get("http://localhost:5001/products");
       setProducts(res.data);
-    } catch (error) {
-      console.error("Error fetching inventory:", error);
+    } catch (err) {
+      console.error("Error fetching products:", err);
     }
   };
 
-  useEffect(() => {
-    fetchInventory();
-  }, []);
-
   return (
-    <div className="inventory">
+    <div className="bubble-card">
       <h2>Inventory</h2>
-      <table className="styled-table">
+      <table className="bubble-table">
         <thead>
           <tr>
             <th>Image</th>
             <th>Name</th>
-            <th>Category</th>
             <th>Price (LSL)</th>
-            <th>Stock</th>
+            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((p) => (
-            <tr key={p.id} className={p.stock < 5 ? "low-stock-row" : ""}>
-              <td>
-                {p.image ? (
-                  <img src={p.image} alt={p.name} className="product-img" />
-                ) : (
-                  "No Image"
-                )}
-              </td>
-              <td>{p.name}</td>
-              <td>{p.category}</td>
-              <td>{Number(p.price).toFixed(2)}</td>
-              <td>{p.stock}</td>
+          {products.length > 0 ? (
+            products.map((p) => (
+              <tr key={p.id}>
+                <td>
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} className="tiny-img" />
+                  ) : (
+                    "No Image"
+                  )}
+                </td>
+                <td>{p.name}</td>
+                <td>{p.price}</td>
+                <td>{p.quantity || p.stock}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No products available</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

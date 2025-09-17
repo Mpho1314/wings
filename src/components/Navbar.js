@@ -1,15 +1,16 @@
-import React from 'react';
+// Navbar.js
+import React from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
 
-const Navbar = ({ setPage }) => {
+const Navbar = () => {
   return (
     <nav className="navbar">
-      <ul>
-        <li onClick={() => setPage('Dashboard')}>Dashboard</li>
-        <li onClick={() => setPage('Products')}>Products</li>
-        <li onClick={() => setPage('Inventory')}>Inventory</li>
-        <li onClick={() => setPage('Sales')}>Sales</li>
-        <li onClick={() => setPage('Reports')}>Reports</li>
-      </ul>
+      <Link className="nav-bubble" to="/">Dashboard</Link>
+      <Link className="nav-bubble" to="/inventory">Inventory</Link>
+      <Link className="nav-bubble" to="/products">Products</Link>
+      <Link className="nav-bubble" to="/sales">Sales</Link>
+      <Link className="nav-bubble" to="/reports">Reports</Link>
     </nav>
   );
 };

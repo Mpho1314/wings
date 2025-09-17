@@ -1,71 +1,139 @@
-import React, { useState, useEffect } from 'react';
-import { getProducts, addProduct, updateProduct, deleteProduct, addTransaction } from '../api';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../App.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [formData, setFormData] = useState({ name:'', category:'', price:'', stock:0, image:'' });
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    stock: "",
+    image: ""
+  });
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const fetchProducts = async () => {
-    const res = await getProducts();
-    setProducts(res.data);
+    try {
+      const res = await axios.get("http://localhost:5001/products");
+      setProducts(res.data);
+    } catch (err) {
+      console.error("Error fetching products:", err);
+    }
   };
 
-  useEffect(() => { fetchProducts(); }, []);
-
-  const handleSave = async () => {
-    if(selectedProduct) await updateProduct(selectedProduct.id, formData);
-    else await addProduct(formData);
-    setShowForm(false); setSelectedProduct(null); setFormData({ name:'', category:'', price:'', stock:0, image:'' });
-    fetchProducts();
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5001/products/${id}`);
+      fetchProducts();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleDelete = async (id) => { await deleteProduct(id); fetchProducts(); };
-  const handleRestock = async (product) => {
-    const qty = parseInt(prompt('Enter quantity to restock:', '10'));
-    if(!isNaN(qty) && qty>0) {
-      await addTransaction({ productId: product.id, quantity: qty, type:'in', amount: 0 });
+  const handleRestock = async (id) => {
+    const quantity = parseInt(prompt("Quantity to restock:"), 10);
+    if (!isNaN(quantity) && quantity > 0) {
+      const product = products.find(p => p.id === id);
+      const updatedStock = (product.stock || product.quantity || 0) + quantity;
+      await axios.put(`http://localhost:5001/products/${id}`, { stock: updatedStock });
       fetchProducts();
     }
   };
 
+  const handleEdit = async (id) => {
+    const name = prompt("New name:");
+    const price = parseFloat(prompt("New price:"));
+    if (!name || isNaN(price)) return;
+    await axios.put(`http://localhost:5001/products/${id}`, { name, price });
+    fetchProducts();
+  };
+
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.price || !formData.stock) return;
+    try {
+      await axios.post("http://localhost:5001/products", {
+        ...formData,
+        price: parseFloat(formData.price),
+        stock: parseInt(formData.stock)
+      });
+      setFormData({ name: "", price: "", stock: "", image: "" });
+      fetchProducts();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <div>
+    <div className="section-card">
       <h2>Products</h2>
-      <button onClick={()=>setShowForm(true)}>Add Product</button>
-      {showForm && (
-        <div style={{marginTop:'10px',padding:'10px',border:'1px solid #ccc'}}>
-          <input placeholder="Name" value={formData.name} onChange={e=>setFormData({...formData,name:e.target.value})} />
-          <input placeholder="Category" value={formData.category} onChange={e=>setFormData({...formData,category:e.target.value})} />
-          <input placeholder="Price" type="number" value={formData.price} onChange={e=>setFormData({...formData,price:e.target.value})} />
-          <input placeholder="Stock" type="number" value={formData.stock} onChange={e=>setFormData({...formData,stock:e.target.value})} />
-          <input placeholder="Image URL" value={formData.image} onChange={e=>setFormData({...formData,image:e.target.value})} />
-          <button onClick={handleSave}>Save</button>
-          <button onClick={()=>setShowForm(false)}>Cancel</button>
-        </div>
-      )}
-      <table>
+      <table className="product-table">
         <thead>
-          <tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Price (LSL)</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
-          {products.map(p=>(
+          {products.length > 0 ? products.map((p) => (
             <tr key={p.id}>
-              <td><img src={p.image} alt={p.name} width="50"/></td>
               <td>{p.name}</td>
-              <td>{p.category}</td>
-              <td>{parseFloat(p.price).toFixed(2)}</td>
-              <td>{p.stock}</td>
+              <td>{p.price}</td>
+              <td>{p.stock || p.quantity}</td>
               <td>
-                <button onClick={()=>{setSelectedProduct(p); setFormData(p); setShowForm(true);}}>Edit</button>
-                <button onClick={()=>handleDelete(p.id)}>Delete</button>
-                <button onClick={()=>handleRestock(p)}>Restock</button>
+                {p.image ? <img src={p.image} alt={p.name} className="product-img" /> : "No Image"}
+              </td>
+              <td className="table-actions">
+                <button onClick={() => handleDelete(p.id)}>Delete</button>
+                <button onClick={() => handleEdit(p.id)}>Edit</button>
+                <button onClick={() => handleRestock(p.id)}>Restock</button>
               </td>
             </tr>
-          ))}
+          )) : (
+            <tr>
+              <td colSpan="5">No products available</td>
+            </tr>
+          )}
         </tbody>
       </table>
+
+      {/* Add Product Form BELOW the table */}
+      <div className="add-product-form">
+        <h3>Add Product</h3>
+        <form onSubmit={handleAddProduct}>
+          <input
+            type="text"
+            placeholder="Name"
+            value={formData.name}
+            onChange={e => setFormData({...formData, name: e.target.value})}
+          />
+          <input
+            type="number"
+            placeholder="Price"
+            value={formData.price}
+            onChange={e => setFormData({...formData, price: e.target.value})}
+          />
+          <input
+            type="number"
+            placeholder="Quantity"
+            value={formData.stock}
+            onChange={e => setFormData({...formData, stock: e.target.value})}
+          />
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={formData.image}
+            onChange={e => setFormData({...formData, image: e.target.value})}
+          />
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
     </div>
   );
 };
