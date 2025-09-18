@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5001", // your backend port
+  baseURL: "https://wings-backend-gsej.onrender.com", // your backend port
 });
 
 export default API;

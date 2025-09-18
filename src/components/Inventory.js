@@ -11,7 +11,7 @@ const Inventory = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/products");
+      const res = await axios.get("https://wings-backend-gsej.onrender.com/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -32,18 +32,15 @@ const Inventory = () => {
         </thead>
         <tbody>
           {products.length > 0 ? (
-            products.map((p) => (
+            products.map(p => (
               <tr key={p.id}>
-                <td>
-                  {p.image ? (
-                    <img src={p.image} alt={p.name} className="tiny-img" />
-                  ) : (
-                    "No Image"
-                  )}
-                </td>
+                <td>{p.image ? <img src={p.image} alt={p.name} className="tiny-img" /> : "No Image"}</td>
                 <td>{p.name}</td>
                 <td>{p.price}</td>
-                <td>{p.quantity || p.stock}</td>
+                <td>
+                  {p.quantity || p.stock}{" "}
+                  {(p.quantity || p.stock) <= 5 && <span className="low-stock-alert">⚠ Low Stock!</span>}
+                </td>
               </tr>
             ))
           ) : (

@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/products");
+      const res = await axios.get("https://wings-backend-gsej.onrender.com/products");
       setProducts(res.data);
     } catch (err) {
       console.error(err);
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/transactions");
+      const res = await axios.get("https://wings-backend-gsej.onrender.com/transactions");
       setTransactions(res.data);
     } catch (err) {
       console.error(err);
@@ -35,7 +35,8 @@ const Dashboard = () => {
   const totalSales = transactions.filter(t => t.type === "out").length;
 
   const bestSelling = products.reduce((best, p) => {
-    const soldQty = transactions.filter(t => t.productId === p.id && t.type === "out").reduce((a,b) => a+b.quantity,0);
+    const soldQty = transactions.filter(t => t.productId === p.id && t.type === "out")
+      .reduce((a,b) => a+b.quantity,0);
     return soldQty > (best.soldQty || 0) ? {...p, soldQty} : best;
   }, {});
 
@@ -46,7 +47,17 @@ const Dashboard = () => {
         <div className="dashboard-card">Total Revenue: {totalRevenue} LSL</div>
         <div className="dashboard-card">Total Stock: {totalStock}</div>
         <div className="dashboard-card">Total Sales: {totalSales}</div>
-        <div className="dashboard-card">Best Selling: {bestSelling.name || "N/A"}</div>
+        <div className="dashboard-card">
+          Best Selling: {bestSelling.name || "N/A"}
+          {bestSelling.image && (
+            <img
+              src={bestSelling.image}
+              alt={bestSelling.name}
+              className="tiny-img"
+              style={{ display: "block", marginTop: "5px" }}
+            />
+          )}
+        </div>
       </div>
 
       {/* Product Menu below */}

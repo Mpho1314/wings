@@ -4,6 +4,7 @@ import "../App.css";
 
 const Sales = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetchProducts();
@@ -11,29 +12,44 @@ const Sales = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/products");
+      const res = await axios.get("https://wings-backend-gsej.onrender.com/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
     }
   };
 
-  const handlePurchase = async (id) => {
-    const quantity = parseInt(prompt("Quantity to buy:"), 10);
-    if (!isNaN(quantity) && quantity > 0) {
-      const product = products.find((p) => p.id === id);
-      if (quantity > (product.stock || product.quantity)) {
-        alert("Not enough stock!");
-        return;
+  const addToCart = (product, quantity) => {
+    if (!quantity || quantity <= 0) return;
+    if (quantity > (product.stock || product.quantity)) {
+      alert("Not enough stock!");
+      return;
+    }
+
+    setCart(prev => {
+      const exists = prev.find(p => p.id === product.id);
+      if (exists) {
+        return prev.map(p => p.id === product.id ? {...p, quantity: p.quantity + quantity} : p);
       }
-      await axios.post("http://localhost:5001/transactions", {
-        productId: id,
-        quantity,
-        totalPrice: product.price * quantity,
+      return [...prev, {...product, quantity}];
+    });
+  };
+
+  const removeFromCart = id => {
+    setCart(prev => prev.filter(p => p.id !== id));
+  };
+
+  const handlePurchase = async () => {
+    for (const item of cart) {
+      await axios.post("https://wings-backend-gsej.onrender.com/transactions", {
+        productId: item.id,
+        quantity: item.quantity,
+        totalPrice: item.price * item.quantity,
         type: "out",
       });
-      fetchProducts();
     }
+    setCart([]);
+    fetchProducts();
   };
 
   return (
@@ -51,20 +67,17 @@ const Sales = () => {
         </thead>
         <tbody>
           {products.length > 0 ? (
-            products.map((p) => (
+            products.map(p => (
               <tr key={p.id}>
-                <td>
-                  {p.image ? (
-                    <img src={p.image} alt={p.name} className="tiny-img" />
-                  ) : (
-                    "No Image"
-                  )}
-                </td>
+                <td>{p.image ? <img src={p.image} alt={p.name} className="tiny-img" /> : "No Image"}</td>
                 <td>{p.name}</td>
                 <td>{p.price}</td>
-                <td>{p.stock || p.quantity}</td>
+                <td>{p.stock || p.quantity} {(p.stock || p.quantity) <= 5 && <span className="low-stock-alert">⚠ Low Stock!</span>}</td>
                 <td>
-                  <button onClick={() => handlePurchase(p.id)}>Purchase</button>
+                  <button onClick={() => {
+                    const qty = parseInt(prompt("Quantity to add to cart:"), 10);
+                    addToCart(p, qty);
+                  }}>Add to Cart</button>
                 </td>
               </tr>
             ))
@@ -75,6 +88,23 @@ const Sales = () => {
           )}
         </tbody>
       </table>
+
+      {/* Cart Summary */}
+      {cart.length > 0 && (
+        <div className="cart-section">
+          <h3>Cart</h3>
+          <ul>
+            {cart.map(item => (
+              <li key={item.id}>
+                {item.name} x {item.quantity} = {item.price * item.quantity} LSL
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              </li>
+            ))}
+          </ul>
+          <p>Total: {cart.reduce((acc, item) => acc + item.price * item.quantity, 0)} LSL</p>
+          <button onClick={handlePurchase}>Purchase All</button>
+        </div>
+      )}
     </div>
   );
 };

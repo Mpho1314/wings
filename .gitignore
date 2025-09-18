@@ -27,3 +27,4 @@ backend/dist/
 .DS_Store
 Thumbs.db
 >>>>>>> 41a5c93af9711b57f75e3f6d15e134e56dc491ad
+.vercel

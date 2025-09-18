@@ -7,7 +7,7 @@ body {
   color: #3d2a35; /* dark purple-brown text */
   margin: 0;
   padding: 0;
-  font-size: 14px; /* medium-small size */
+  font-size: 30px; /* medium-small size */
 }
 
 /* Navbar */
@@ -16,7 +16,7 @@ body {
   padding: 0.6rem 1.2rem; /* smaller padding */
   color: white;
   font-weight: bold;
-  font-size: 15px; /* slightly reduced */
+  font-size: 25px; /* slightly reduced */
   box-shadow: 0 3px 10px rgba(0,0,0,0.12);
 }
 
@@ -34,9 +34,9 @@ body {
 /* Bubble-like Card Styling for Main Sections */
 .bubble-card {
   background: white;
-  border-radius: 18px; /* bubble effect */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.2rem; /* reduced */
+  border-radius: 29px; /* bubble effect */
+  box-shadow: 0 23px 19px rgba(0, 0, 0, 0.1);
+  padding: 1.9rem; /* reduced */
   margin: 1rem auto;
   max-width: 900px; /* narrower */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -49,7 +49,7 @@ body {
 
 /* Titles inside bubbles */
 .bubble-title {
-  font-size: 20px; /* smaller */
+  font-size: 80px; /* smaller */
   font-weight: 700;
   color: #8e3e63; /* deep pink */
   margin-bottom: 0.8rem;
@@ -61,14 +61,14 @@ table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 6px; /* compact rows */
-  font-size: 13px;
+  font-size: 29px;
 }
 
 th {
   background: #e09cb7;
   color: white;
   font-weight: 600;
-  padding: 6px;
+  padding: 60px;
   border-radius: 6px;
 }
 
@@ -85,7 +85,8 @@ td {
 button {
   background: linear-gradient(135deg, #c18ee0, #e09cb7);
   border: none;
-  padding: 6px 12px; /* smaller */
+  padding: 50
+  x 30px; /* smaller */
   color: white;
   font-weight: 600;
   border-radius: 8px;
@@ -98,9 +99,9 @@ button:hover {
   background: linear-gradient(135deg, #e09cb7, #c18ee0);
   transform: scale(1.05);
 }/* Small, medium image sizes */
-.small-img { width: 40px; height: auto; border-radius: 8px; }
-.medium-img { width: 80px; height: auto; border-radius: 12px; }
-.tiny-img { width: 30px; height: auto; border-radius: 6px; }
+.small-img { width: 80px; height: auto; border-radius: 16px; }
+.medium-img { width: 120px; height: auto; border-radius: 24px; }
+.tiny-img { width: 60px; height: auto; border-radius: 12px; }
 
 /* Hide/show on screen sizes */
 .hide-on-small { display: grid; }
@@ -116,7 +117,7 @@ button:hover {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  font-size: 0.9rem;
+  font-size: 35rem;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
@@ -176,28 +177,28 @@ button:hover {
 .section-card {
   background: #fdf0fb; /* light pink/purple tone */
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
   margin: 15px auto;
   max-width: 1000px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  font-size: 14px; /* smaller font */
+  box-shadow: 0 30px 50px rgba(0,0,0,0.1);
+  font-size: 30px; /* smaller font */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 table th, table td {
-  padding: 8px;
+  padding: 20px;
   text-align: left;
   border-bottom: 1px solid #ccc;
 }
 
 table img {
-  width: 40px;
-  height: 40px;
+  width: 150px;
+  height: 160px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -212,14 +213,14 @@ button {
 }
 
 .add-product-form input {
-  margin: 5px 5px 5px 0;
-  padding: 4px 6px;
-  font-size: 12px;
+  margin: 10px 10px 10px 0;
+  padding: 10px 10px;
+  font-size: 15px;
 }
 
 .add-product-form button {
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 10px 16px;
+  font-size: 15px;
 }
 /* App.css */
 .reports-cards {
@@ -253,7 +254,7 @@ button {
   flex: 1 1 200px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   font-weight: 600;
-  text-align: center;
+  text-align: left;
 }
 
 /* Product menu cards below */
@@ -270,13 +271,172 @@ button {
   width: 140px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  font-size: 13px;
+  font-size: 19px;
 }
 
 .product-card img {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 160px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 5px;
+}
+
+.low-stock-alert {
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.low-stock-alert {
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.low-stock-banner {
+  background-color: #ffe5e5;
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.cart-section {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-section li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.cart-section button {
+  margin-left: 10px;
+}
+/* General table styling */
+.bubble-table, .product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.bubble-table th, .bubble-table td,
+.product-table th, .product-table td {
+  border: 1px solid hsl(309, 26%, 14%);
+  padding: 10px;
+  text-align: center;
+}
+
+.bubble-table th, .product-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+/* Row hover effect */
+.bubble-table tr:hover, .product-table tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Tiny images in table */
+.tiny-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Low-stock alert for table rows */
+.low-stock-alert {
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Section card styling */
+.bubble-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Add spacing for headings */
+.bubble-card h2 {
+  margin-bottom: 15px;
+}
+
+/* Cart Section (for Sales.js) */
+.cart-section {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-section li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cart-section button {
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-section button:hover {
+  background-color: #0056b3;
+}
+
+/* Action buttons in products table */
+.table-actions button {
+  margin: 0 3px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.table-actions button:hover {
+  opacity: 0.8;
+}
+
+.table-actions button:nth-child(1) {
+  background-color: #e74c3c; /* Delete - red */
+  color: white;
+}
+
+.table-actions button:nth-child(2) {
+  background-color: #f1c40f; /* Edit - yellow */
+  color: white;
+}
+
+.table-actions button:nth-child(3) {
+  background-color: #2ecc71; /* Restock - green */
+  color: white;
 }
