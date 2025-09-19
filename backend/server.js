@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5001; // dynamic port for Render
 
-app.use(cors());
+app.use(cors({ origin: "https://your-vercel-app.vercel.app" }));
 app.use(bodyParser.json());
 
 // Safe read/write helpers with absolute paths
