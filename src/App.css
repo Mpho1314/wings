@@ -31,9 +31,10 @@ button:hover {
   background: #fffafc;
   border-radius: 14px;
   padding: 20px;
-  margin: 20px auto;
-  max-width: 1000px;
+  margin: 0;
+  width: 100%;
   box-shadow: 0 4px 12px rgba(90, 42, 131, 0.15);
+  box-sizing: border-box;
 }
 
 .dashboard-cards {
@@ -44,8 +45,7 @@ button:hover {
 }
 
 .dashboard-card {
-  flex: 1;
-  min-width: 180px;
+  flex: 1 1 220px; /* flexible width, min 220px */
   background: linear-gradient(135deg, #f4c2d7, #cfa6f5);
   color: #3e2c41;
   border-radius: 12px;
@@ -83,6 +83,42 @@ tr:hover {
   background: #7e3d76;
 }
 
+/* Make tables responsive */
+table, tbody, tr, td, th {
+  display: block;
+}
+
+tr {
+  margin-bottom: 10px;
+}
+
+td, th {
+  text-align: right;
+  padding-left: 50%;
+  position: relative;
+}
+
+td::before, th::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 15px;
+  text-align: left;
+  font-weight: bold;
+  color: #5a2a83;
+}
+
+@media (min-width: 768px) {
+  table, tbody, tr, td, th {
+    display: table;
+    text-align: left;
+    padding-left: 12px;
+    position: static;
+  }
+  td::before, th::before {
+    content: none;
+  }
+}
+
 /* ====== LOW STOCK ALERT ====== */
 .low-stock-alert {
   color: #b22222;
@@ -111,6 +147,7 @@ tr:hover {
   flex-wrap: wrap;
   gap: 15px;
   margin-top: 15px;
+  justify-content: flex-start;
 }
 
 .product-card {
@@ -118,9 +155,10 @@ tr:hover {
   border: 1px solid #e1c4d4;
   border-radius: 12px;
   padding: 12px;
-  width: 150px;
+  flex: 1 1 150px; /* flexible, min width 150px */
   text-align: center;
   box-shadow: 0 2px 6px rgba(61, 38, 73, 0.15);
+  box-sizing: border-box;
 }
 
 .product-card img {
@@ -136,6 +174,7 @@ tr:hover {
   display: grid;
   gap: 15px;
   margin-top: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .report-card {
@@ -143,6 +182,8 @@ tr:hover {
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 2px 6px rgba(61, 38, 73, 0.15);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ====== FORMS ====== */
@@ -152,10 +193,17 @@ tr:hover {
   background: #fceff8;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(61, 38, 73, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
 .add-product-form input {
-  margin: 5px;
+  flex: 1 1 150px;
+  margin: 5px 0;
   padding: 8px;
   border: 1px solid #c9a1c9;
   border-radius: 8px;
@@ -174,4 +222,6 @@ tr:hover {
   background: #fbeaf4;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(61, 38, 73, 0.1);
+  width: 100%;
+  box-sizing: border-box;
 }
