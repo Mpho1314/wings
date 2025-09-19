@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../config";
 import "../App.css";
 
 const Inventory = () => {
@@ -11,7 +11,7 @@ const Inventory = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://wings-backend-gsej.onrender.com/products");
+      const res = await API.get("/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -19,39 +19,18 @@ const Inventory = () => {
   };
 
   return (
-    <div className="bubble-card">
+    <div className="container">
       <h2>Inventory</h2>
-      <table className="bubble-table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price (LSL)</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length > 0 ? (
-            products.map(p => (
-              <tr key={p.id}>
-                <td>{p.image ? <img src={p.image} alt={p.name} className="tiny-img" /> : "No Image"}</td>
-                <td>{p.name}</td>
-                <td>{p.price}</td>
-                <td>
-                  {p.quantity || p.stock}{" "}
-                  {(p.quantity || p.stock) <= 5 && <span className="low-stock-alert">⚠ Low Stock!</span>}
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="4">No products available</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <ul>
+        {products.map((p) => (
+          <li key={p.id}>
+            {p.name} - Stock: {p.stock}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 export default Inventory;
+
